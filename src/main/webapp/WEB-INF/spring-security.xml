@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/jdbc
+		http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/security 
+		http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+	
+	<http auto-config="true">
+		<!-- Login form and management -->
+		<form-login login-page="/login.jsp" default-target-url="/home.html" always-use-default-target="true" authentication-failure-url="/login.jsp?error=true" login-processing-url="/j_security_check"/>
+		<!-- Logout management -->
+		<logout invalidate-session="true" logout-url="/logout.jsp" logout-success-url="/home.html" />
+		<!-- ACL setup based on URL resources and user roles -->
+		<intercept-url pattern="/home.html" />
+		<intercept-url pattern="/admin.html" access="ROLE_ADMIN" />
+		<intercept-url pattern="/users" access="ROLE_ADMIN" />
+		<intercept-url pattern="/user" access="ROLE_ADMIN" />
+    </http>
+    
+    <authentication-manager alias="authentication-manager">
+    	<authentication-provider user-service-ref="userManager">
+    		<password-encoder hash="sha" />
+    	</authentication-provider>
+    </authentication-manager>
+    
+</beans:beans>

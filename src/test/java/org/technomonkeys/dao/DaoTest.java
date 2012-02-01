@@ -32,6 +32,7 @@ public class DaoTest {
 
 		User vbarrila = userDAO.getUserByUsername("user");
 		assertNotNull(vbarrila);
+		
 
 		User jdoe = new User("jdoe", "jdoe", roleDAO.getByType(RoleTypes.ROLE_USER));
 		userDAO.saveOrUpdate(jdoe);

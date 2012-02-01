@@ -46,20 +46,20 @@
     <bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder"/>
     
 	<!-- DAOs -->
-	<bean id="userDAO" class="com.lumata.imm.dao.impl.UserDAOImpl">
+	<bean id="userDAO" class="org.technomonkeys.dao.impl.UserDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<bean id="roleDAO" class="com.lumata.imm.dao.impl.RoleDAOImpl">
+	<bean id="roleDAO" class="org.technomonkeys.dao.impl.RoleDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
 	<!-- Managers -->
-	<bean id="userManager" class="com.lumata.imm.manager.impl.UserManagerImpl">
+	<bean id="userManager" class="org.technomonkeys.manager.impl.UserManagerImpl">
 		<property name="userDAO" ref="userDAO" />
 	</bean>
 	
-	<bean id="roleManager" class="com.lumata.imm.manager.impl.RoleManagerImpl">
+	<bean id="roleManager" class="org.technomonkeys.manager.impl.RoleManagerImpl">
 		<property name="roleDAO" ref="roleDAO" />
 	</bean>
     
