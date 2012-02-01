@@ -1,0 +1,10 @@
+*~
+*.swp
+target/*
+.settings/*
+bin/*
+.classpath
+.project
+.springBeans
+.git/*
+*CVS*
